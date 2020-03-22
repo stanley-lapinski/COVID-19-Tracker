@@ -1,3 +1,56 @@
 body {
     background-color: #2F3336;
+    color: #efefef;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 17px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: #C0D06F;
+    margin: 20px;
+}
+
+.jumpers {
+    text-align: center;
+}
+
+.flag-img {
+    width: 100%;
+    height: auto;
+}
+
+.jumpers p {
+    margin-bottom: 30px;
+}
+
+.caption-hospitalized-icon {
+    width: 15%;
+    height: 15%;
+    vertical-align: middle;
+}
+
+.small-caption-top {
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.big-caption-top {
+    margin-top: 8px;
+    font-size: 30px;
+}
+
+.small-caption {
+    margin-top: 8px;
+    font-size: 10px;
+}
+
+.big-caption {
+    margin-top: 8px;
+    font-size: 22px;
+}
+
+.jumpers figure {
+    margin: 20px;
 }
