@@ -19,8 +19,25 @@
 
 <body>
     <header>
-        <h1>THIS IS H1 HEADER</h1>
-        <p>this is p header</p>
+        <nav class="navbar navbar-dark bg-tracker navbar-expand-lg">
+            <a class="navbar-brand" href="#">
+                <img src="../img/big-logo-gray.png" class="d-inline-block mr-5" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link mr-3" href="#"> HOME </a></li>
+                    <li class="nav-item"><a class="nav-link mr-3" href="#"> DETAILED DATA </a></li>
+                    <li class="nav-item"><a class="nav-link mr-3" href="#"> WHO INFO </a></li>
+                </ul>
+                <form class="form-inline">
+                    <input class="form-control mr-1" type="search" placeholder="Wyszukaj" aria-label="Wyszukaj">
+                    <button class="btn btn-light" type="submit">Znajdź</button>
+                </form>
+            </div>
+        </nav>
     </header>
     <main>
         <article class="container">
@@ -37,7 +54,7 @@
                 </div>
                 <div class="col-sm-4">
                     <figure>
-                        <a href="#"><img src="../img/world-flag-detail-green.png" class="flag-img" alt="Kamil Stoch"></a>
+                        <a href="#"><img src="../img/world-flag-detail-gray.png" class="flag-img" alt="Kamil Stoch"></a>
                         <figcaption class="big-caption-top">
                             <img src="../img/hospitalized-gray.png" class="caption-hospitalized-icon" alt="hospitalized-icon">
                             <span style="vertical-align: middle">--------</span>
@@ -210,9 +227,9 @@
         </article>
     </main>
 
-    <!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>-->
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

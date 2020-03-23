@@ -5,15 +5,9 @@ body {
     font-size: 17px;
 }
 
-header {
-    text-align: center;
-}
-
-h1 {
-    font-size: 36px;
-    font-weight: 400;
-    color: #C0D06F;
-    margin: 20px;
+.bg-tracker
+{
+    background-color: #0B2E13 !important;
 }
 
 .container {
