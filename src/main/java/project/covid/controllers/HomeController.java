@@ -15,7 +15,7 @@ public class HomeController {
     @Autowired
     private Covid19Service service;
 
-    @GetMapping("/")
+    @GetMapping("/cases")
     public String home(Model model) {
         List<LocationStats> allStats = service.getAllStats();
         int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
@@ -24,5 +24,27 @@ public class HomeController {
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
         return "home";
+    }
+
+    @GetMapping("/deaths")
+    public String deaths(Model model) {
+        List<LocationStats> allStats = service.getAllStats();
+        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        model.addAttribute("locationStats", allStats);
+        model.addAttribute("totalReportedCases", totalReportedCases);
+        model.addAttribute("totalNewCases", totalNewCases);
+        return "deaths";
+    }
+
+    @GetMapping("/recoveries")
+    public String recoveries(Model model) {
+        List<LocationStats> allStats = service.getAllStats();
+        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        model.addAttribute("locationStats", allStats);
+        model.addAttribute("totalReportedCases", totalReportedCases);
+        model.addAttribute("totalNewCases", totalNewCases);
+        return "recoveries";
     }
 }
