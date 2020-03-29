@@ -23,7 +23,7 @@ public class TrackerController {
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
-        return "home";
+        return "html/home";
     }
 
     @GetMapping("/deaths")
@@ -34,7 +34,7 @@ public class TrackerController {
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalDeaths", totalDeaths);
         model.addAttribute("totalNewDeaths", totalNewDeaths);
-        return "deaths";
+        return "html/deaths";
     }
 
     @GetMapping("/recoveries")
@@ -45,6 +45,6 @@ public class TrackerController {
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalRecoveries", totalRecoveries);
         model.addAttribute("totalNewRecoveries", totalNewRecoveries);
-        return "recoveries";
+        return "html/recoveries";
     }
 }
