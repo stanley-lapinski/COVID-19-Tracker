@@ -15,15 +15,20 @@ public class TrackerController {
     @Autowired
     private TrackerService service;
 
+    @GetMapping("/home")
+    public String home() {
+        return "html/home";
+    }
+
     @GetMapping("/cases")
-    public String home(Model model) {
+    public String cases(Model model) {
         List<LocationStats> allStats = service.getAllStatsCases();
         int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getConfirmedCases()).sum();
         int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDifferenceCases()).sum();
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
-        return "html/home";
+        return "html/cases";
     }
 
     @GetMapping("/deaths")

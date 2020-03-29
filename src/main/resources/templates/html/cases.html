@@ -25,10 +25,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto" style="font-size: 19px">
-                    <li class="nav-item active mr-2">
+                    <li class="nav-item mr-2">
                         <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item mr-2">
+                    <li class="nav-item active mr-2">
                         <a class="nav-link" href="/cases">Confirmed Cases<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item mr-2">
@@ -47,7 +47,41 @@
         </nav>
     </header>
     <main>
-
+        <article class="container">
+            <div style="margin-bottom: 100px">Navbar jumbotron</div>
+            <div class="jumbotron mt-5">
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <img src="https://raw.githubusercontent.com/stanley-lapinski/COVID-19-Tracker/master/src/main/resources/static/img/small-logo-black.png" width="70" height="70" class="align-self-center mr-3" alt="...">
+                        <div class="media-body">
+                            <h1 class="display-4 mt-0 mb-1" th:text="${totalReportedCases}"></h1>
+                            Total number of confirmed cases of COVID-19 around the Planet
+                        </div>
+                    </li>
+                    <li class="media mt-4">
+                        <img src="https://raw.githubusercontent.com/stanley-lapinski/COVID-19-Tracker/master/src/main/resources/static/img/small-logo-black.png" width="70" height="70" class="align-self-center mr-3" alt="...">
+                        <div class="media-body">
+                            <h2 class="mt-0 mb-1" th:text="${totalNewCases}"></h2>
+                            Number of new cases of COVID-19 since the previous day
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Number of Confirmed Cases</th>
+                    <th>Changes since the last day</th>
+                </tr>
+                <tr th:each="locationStat : ${locationStats}">
+                    <td th:text="${locationStat.getState()}"></td>
+                    <td th:text="${locationStat.getCountry()}"></td>
+                    <td th:text="${locationStat.getConfirmedCases()}"></td>
+                    <td th:text="${locationStat.getDifferenceCases()}"></td>
+                </tr>
+            </table>
+        </article>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
