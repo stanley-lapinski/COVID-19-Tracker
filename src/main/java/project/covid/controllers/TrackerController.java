@@ -5,15 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import project.covid.models.LocationStats;
-import project.covid.services.Covid19Service;
+import project.covid.services.TrackerService;
 
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class TrackerController {
 
     @Autowired
-    private Covid19Service service;
+    private TrackerService service;
 
     @GetMapping("/cases")
     public String home(Model model) {
