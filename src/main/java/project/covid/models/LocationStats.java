@@ -4,16 +4,12 @@ public class LocationStats {
 
     private String state;
     private String country;
-    private int latestConfirmedCases;
-    private int diffFromPrevDay;
-
-    public int getDiffFromPrevDay() {
-        return diffFromPrevDay;
-    }
-
-    public void setDiffFromPrevDay(int diffFromPrevDay) {
-        this.diffFromPrevDay = diffFromPrevDay;
-    }
+    private int confirmedCases;
+    private int differenceCases;
+    private int confirmedDeaths;
+    private int differenceDeaths;
+    private int confirmedRecoveries;
+    private int differenceRecoveries;
 
     public String getState() {
         return state;
@@ -31,20 +27,51 @@ public class LocationStats {
         this.country = country;
     }
 
-    public int getLatestConfirmedCases() {
-        return latestConfirmedCases;
+    public int getConfirmedCases() {
+        return confirmedCases;
     }
 
-    public void setLatestConfirmedCases(int latestConfirmedCases) {
-        this.latestConfirmedCases = latestConfirmedCases;
+    public void setConfirmedCases(int confirmedCases) {
+        this.confirmedCases = confirmedCases;
     }
 
-    @Override
-    public String toString() {
-        return "LocationStats{" +
-                "state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", latestConfirmedCases=" + latestConfirmedCases +
-                '}';
+    public int getDifferenceCases() {
+        return differenceCases;
+    }
+
+    public void setDifferenceCases(int differenceCases) {
+        this.differenceCases = differenceCases;
+    }
+
+    public int getConfirmedDeaths() {
+        return confirmedDeaths;
+    }
+
+    public void setConfirmedDeaths(int confirmedDeaths) {
+        this.confirmedDeaths = confirmedDeaths;
+    }
+
+    public int getDifferenceDeaths() {
+        return differenceDeaths;
+    }
+
+    public void setDifferenceDeaths(int differenceDeaths) {
+        this.differenceDeaths = differenceDeaths;
+    }
+
+    public int getConfirmedRecoveries() {
+        return confirmedRecoveries;
+    }
+
+    public void setConfirmedRecoveries(int confirmedRecoveries) {
+        this.confirmedRecoveries = confirmedRecoveries;
+    }
+
+    public int getDifferenceRecoveries() {
+        return differenceRecoveries;
+    }
+
+    public void setDifferenceRecoveries(int differenceRecoveries) {
+        this.differenceRecoveries = differenceRecoveries;
     }
 }

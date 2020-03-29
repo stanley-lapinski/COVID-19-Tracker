@@ -21,34 +21,83 @@ public class Covid19Service {
 
     private static final String CASES_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
     private static final String DEATHS_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv";
-    private static final String RECOVS_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
+    private static final String RECOVERIES_DATA_URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_recovered_global.csv";
 
-    private List<LocationStats> allStats = new ArrayList<>();
+    private List<LocationStats> allStatsCases = new ArrayList<>();
+    private List<LocationStats> allStatsDeaths = new ArrayList<>();
+    private List<LocationStats> allStatsRecoveries = new ArrayList<>();
 
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     public void fetchVirusData() throws IOException, InterruptedException {
-        List<LocationStats> newStats = new ArrayList<>();
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(CASES_DATA_URL)).build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        List<LocationStats> newStatsCases = new ArrayList<>();
+        List<LocationStats> newStatDeaths = new ArrayList<>();
+        List<LocationStats> newStatRecoveries = new ArrayList<>();
 
-        StringReader csvBodyReader = new StringReader(response.body());
-        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
-        for (CSVRecord record : records) {
-            LocationStats locationStat = new LocationStats();
-            locationStat.setState(record.get("Province/State"));
-            locationStat.setCountry(record.get("Country/Region"));
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest requestCases = HttpRequest.newBuilder().uri(URI.create(CASES_DATA_URL)).build();
+        HttpRequest requestDeaths = HttpRequest.newBuilder().uri(URI.create(DEATHS_DATA_URL)).build();
+        HttpRequest requestRecoveries = HttpRequest.newBuilder().uri(URI.create(RECOVERIES_DATA_URL)).build();
+
+        HttpResponse<String> responseCases = client.send(requestCases, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> responseDeaths = client.send(requestDeaths, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> responseRecoveries = client.send(requestRecoveries, HttpResponse.BodyHandlers.ofString());
+
+        StringReader csvReaderCases = new StringReader(responseCases.body());
+        StringReader csvReaderDeaths = new StringReader(responseDeaths.body());
+        StringReader csvReaderRecoveries = new StringReader(responseRecoveries.body());
+
+        Iterable<CSVRecord> recordsCases = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReaderCases);
+        Iterable<CSVRecord> recordsDeaths = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReaderDeaths);
+        Iterable<CSVRecord> recordsRecoveries = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReaderRecoveries);
+
+        for (CSVRecord record : recordsCases) {
+            LocationStats statCases = new LocationStats();
+            statCases.setState(record.get("Province/State"));
+            statCases.setCountry(record.get("Country/Region"));
             int latestCases = Integer.parseInt(record.get(record.size() - 1));
             int prevDayCases = Integer.parseInt(record.get(record.size() - 2));
-            locationStat.setLatestConfirmedCases(latestCases);
-            locationStat.setDiffFromPrevDay(latestCases - prevDayCases);
-            newStats.add(locationStat);
+            statCases.setConfirmedCases(latestCases);
+            statCases.setDifferenceCases(latestCases - prevDayCases);
+            newStatsCases.add(statCases);
         }
-        this.allStats = newStats;
+        this.allStatsCases = newStatsCases;
+
+        for (CSVRecord record : recordsDeaths) {
+            LocationStats statDeaths = new LocationStats();
+            statDeaths.setState(record.get("Province/State"));
+            statDeaths.setCountry(record.get("Country/Region"));
+            int latestDeaths = Integer.parseInt(record.get(record.size() - 1));
+            int prevDayDeaths = Integer.parseInt(record.get(record.size() - 2));
+            statDeaths.setConfirmedDeaths(latestDeaths);
+            statDeaths.setDifferenceDeaths(latestDeaths - prevDayDeaths);
+            newStatDeaths.add(statDeaths);
+        }
+        this.allStatsDeaths = newStatDeaths;
+
+        for (CSVRecord record : recordsRecoveries) {
+            LocationStats statsRecoveries = new LocationStats();
+            statsRecoveries.setState(record.get("Province/State"));
+            statsRecoveries.setCountry(record.get("Country/Region"));
+            int latestRecoveries = Integer.parseInt(record.get(record.size() - 1));
+            int prevDayRecoveries = Integer.parseInt(record.get(record.size() - 2));
+            statsRecoveries.setConfirmedRecoveries(latestRecoveries);
+            statsRecoveries.setDifferenceRecoveries(latestRecoveries - prevDayRecoveries);
+            newStatRecoveries.add(statsRecoveries);
+        }
+        this.allStatsRecoveries = newStatRecoveries;
     }
 
-    public List<LocationStats> getAllStats() {
-        return allStats;
+    public List<LocationStats> getAllStatsCases() {
+        return allStatsCases;
+    }
+
+    public List<LocationStats> getAllStatsDeaths() {
+        return allStatsDeaths;
+    }
+
+    public List<LocationStats> getAllStatsRecoveries() {
+        return allStatsRecoveries;
     }
 }

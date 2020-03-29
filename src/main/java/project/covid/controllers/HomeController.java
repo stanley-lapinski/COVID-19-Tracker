@@ -17,9 +17,9 @@ public class HomeController {
 
     @GetMapping("/cases")
     public String home(Model model) {
-        List<LocationStats> allStats = service.getAllStats();
-        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
-        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        List<LocationStats> allStats = service.getAllStatsCases();
+        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getConfirmedCases()).sum();
+        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDifferenceCases()).sum();
         model.addAttribute("locationStats", allStats);
         model.addAttribute("totalReportedCases", totalReportedCases);
         model.addAttribute("totalNewCases", totalNewCases);
@@ -28,23 +28,23 @@ public class HomeController {
 
     @GetMapping("/deaths")
     public String deaths(Model model) {
-        List<LocationStats> allStats = service.getAllStats();
-        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
-        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        List<LocationStats> allStats = service.getAllStatsDeaths();
+        int totalDeaths = allStats.stream().mapToInt(stat -> stat.getConfirmedDeaths()).sum();
+        int totalNewDeaths = allStats.stream().mapToInt(stat -> stat.getDifferenceDeaths()).sum();
         model.addAttribute("locationStats", allStats);
-        model.addAttribute("totalReportedCases", totalReportedCases);
-        model.addAttribute("totalNewCases", totalNewCases);
+        model.addAttribute("totalDeaths", totalDeaths);
+        model.addAttribute("totalNewDeaths", totalNewDeaths);
         return "deaths";
     }
 
     @GetMapping("/recoveries")
     public String recoveries(Model model) {
-        List<LocationStats> allStats = service.getAllStats();
-        int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestConfirmedCases()).sum();
-        int totalNewCases = allStats.stream().mapToInt(stat -> stat.getDiffFromPrevDay()).sum();
+        List<LocationStats> allStats = service.getAllStatsRecoveries();
+        int totalRecoveries = allStats.stream().mapToInt(stat -> stat.getConfirmedRecoveries()).sum();
+        int totalNewRecoveries = allStats.stream().mapToInt(stat -> stat.getDifferenceRecoveries()).sum();
         model.addAttribute("locationStats", allStats);
-        model.addAttribute("totalReportedCases", totalReportedCases);
-        model.addAttribute("totalNewCases", totalNewCases);
+        model.addAttribute("totalRecoveries", totalRecoveries);
+        model.addAttribute("totalNewRecoveries", totalNewRecoveries);
         return "recoveries";
     }
 }
