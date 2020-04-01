@@ -3,7 +3,7 @@
 
 **What does this application do?**
 
-This is a web application designed to track all new cases of Corona virus across the world as well as death toll and recoveries from COVID-19. Information about new cases changes every day for every country. Data based on which this application is build, is provided by Johns Hopkins Whiting School of Engineering GitHub profile (profile addres below). 
+This is a web application designed to track all new cases of Corona virus across the world as well as death toll and recoveries from COVID-19. Information about new cases changes every day for every country. Data based on which this application is build, is provided by Johns Hopkins Whiting School of Engineering GitHub profile (profile address below). 
 
 I would like to point out that this application was build for recruitment purposes and should not be used as a reference in any media outlets. This project was build for educational and job-hunting purposes hence the source of specific information was not thoroughly checked. Information about specific cases in specific country may differ from other sources and as an author of this application I do not hold myself responsible for misinformation.
 
@@ -19,6 +19,6 @@ Biggest challenges involved implementing data from outside source with constant 
 
 **What did I learn?**
 
-Expecially valuable was an experiance of working with an actual outside source connected to the real world problem. This application deals with sensitive matter of world wide pandemic what makes this much more serious project than the other ones I've made so far.
+Especially valuable was an experience of working with an actual outside source connected to the real-world problem. This application deals with sensitive matter of worldwide pandemic what makes this much more serious project than the other ones I've made so far.
 
 **Screen shots:**
