@@ -11,7 +11,7 @@ Source of data - https://github.com/CSSEGISandData/COVID-19
 
 **Tools and Technologies used in this project:**
 
-![Obraz2](https://user-images.githubusercontent.com/57737385/77232357-d6266000-6ba0-11ea-8c3c-3d35d7fd3044.png)
+![toolsSpring1](https://user-images.githubusercontent.com/57737385/78133566-ee0ea700-741e-11ea-8741-7009ae9dc3a6.png)
 
 **Biggest challenges I've encountered**
 
