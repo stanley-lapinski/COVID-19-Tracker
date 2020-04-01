@@ -4,7 +4,8 @@
 
 1. Download zip package from the repository
 2. Unpack it on your computer
-3. 
+3. Use your favorite IDE to run Spring App
+4. Open any browser and go to "localhost:xxxx", where "xxxx" is the free port on which application was run (most likely it will be on port 8080)
 
 **What does this application do?**
 
@@ -25,5 +26,3 @@ Biggest challenges involved implementing data from outside source with constant 
 **What did I learn?**
 
 Especially valuable was an experience of working with an actual outside source connected to the real-world problem. This application deals with sensitive matter of worldwide pandemic what makes this much more serious project than the other ones I've made so far.
-
-**Screen shots:**
