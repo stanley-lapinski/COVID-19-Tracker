@@ -1,5 +1,10 @@
 # COVID-19-Tracker
 
+**How to use it?**
+
+1. Download zip package from the repository
+2. Unpack it on your computer
+3. 
 
 **What does this application do?**
 
