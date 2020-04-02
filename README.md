@@ -5,7 +5,7 @@
 1. Download zip package from the repository
 2. Unpack it on your computer
 3. Use your favorite IDE to run Spring App
-4. Open any browser and go to "localhost:xxxx", where "xxxx" is the free port on which application was run (most likely it will be on port 8080)
+4. Open any browser and go to "localhost:xxxx/home", where "xxxx" is the free port on which application was run (most likely it will be on port 8080)
 
 **What does this application do?**
 
